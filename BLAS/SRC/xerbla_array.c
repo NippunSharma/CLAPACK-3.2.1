@@ -20,7 +20,7 @@
     integer i__1, i__2, i__3;
 
     /* Builtin functions */
-    /* Subroutine */ int s_copy(char *, char *, ftnlen, ftnlen);
+    /* Subroutine */ void s_copy(char *, char *, ftnlen, ftnlen);
     integer i_len(char *, ftnlen);
 
     /* Local variables */

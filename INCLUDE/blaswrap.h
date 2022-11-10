@@ -5,6 +5,7 @@
 #ifndef __BLASWRAP_H
 #define __BLASWRAP_H
 
+#define NO_BLAS_WRAP
 #ifndef NO_BLAS_WRAP
  
 /* BLAS1 routines */

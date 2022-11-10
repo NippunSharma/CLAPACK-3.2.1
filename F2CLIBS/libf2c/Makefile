@@ -20,14 +20,16 @@ include $(TOPDIR)/make.inc
 # compile, then strip unnecessary symbols
 .c.o:
 	$(CC) -c -DSkip_f2c_Undefs $(CFLAGS) $*.c
-	ld -r -x -o $*.xxx $*.o
-	mv $*.xxx $*.o
+# ld -r -x -o $*.xxx $*.o
+# mv $*.xxx $*.o
 ## Under Solaris (and other systems that do not understand ld -x),
 ## omit -x in the ld line above.
 ## If your system does not have the ld command, comment out
 ## or remove both the ld and mv lines above.
 
-MISC =	f77vers.o i77vers.o main.o s_rnge.o abort_.o exit_.o getarg_.o iargc_.o\
+# main.o REMOVED.
+
+MISC =	f77vers.o i77vers.o s_rnge.o abort_.o exit_.o getarg_.o iargc_.o\
 	getenv_.o signal_.o s_stop.o s_paus.o system_.o cabs.o ctype.o\
 	derf_.o derfc_.o erf_.o erfc_.o sig_die.o uninit.o
 POW =	pow_ci.o pow_dd.o pow_di.o pow_hh.o pow_ii.o pow_ri.o pow_zi.o pow_zz.o
@@ -182,8 +184,8 @@ xwsne.o:	lio.h
 xwsne.o:	fmt.h
 
 arith.h: arithchk.c
-	$(CC) $(CFLAGS) -DNO_FPINIT arithchk.c -lm ||\
-	 $(CC) -DNO_LONG_LONG $(CFLAGS) -DNO_FPINIT arithchk.c -lm
+	gcc $(CFLAGS) -DNO_FPINIT arithchk.c -lm ||\
+	 gcc -DNO_LONG_LONG $(CFLAGS) -DNO_FPINIT arithchk.c -lm
 	./a.out >arith.h
 	rm -f a.out arithchk.o
 
